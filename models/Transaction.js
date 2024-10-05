@@ -6,7 +6,9 @@ const TransactionSchema = new mongoose.Schema({
     category: { type: String, required: true },
     date: { type: Date, required: true },
     note: { type: String, required: false },
-    type: { type: String, required: true }, // 'income' or 'expense'
+    type: { type: String, required: true },
+    userId: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User' } // Assuming you have a User model
 });
 
-module.exports = mongoose.model('Transaction', TransactionSchema);
+const Transaction = mongoose.model('Transaction', TransactionSchema);
+module.exports = Transaction;
